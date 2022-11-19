@@ -27,6 +27,7 @@ export class NewsComponent implements OnInit {
   ngOnInit(): void { 
     this.getNews(this.currentCountry, this.currentCategory);
     this.getCountryList();
+    this.getCountryName();
   }
 
   getNews(country: string, category: string) {
@@ -45,6 +46,11 @@ export class NewsComponent implements OnInit {
   onChangeCategory(e:any) {
     this.currentCategory = e;
     this.getNews(this.currentCountry, this.currentCategory);
+  }
+
+  getCountryName() {
+    let [obj] = this.countryList.filter(obj => obj.acronim == this.currentCountry);
+    return obj.country;
   }
 
 }

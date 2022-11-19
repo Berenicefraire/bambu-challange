@@ -1,6 +1,6 @@
 <app-header></app-header>
 <app-card></app-card>
-<p>Estás viendo las noticias de {{currentCountry}} en la categoría {{currentCategory | titlecase }}</p>
+<p>Estás viendo las noticias de {{getCountryName()}} en la categoría {{currentCategory | titlecase }}</p>
 <select [ngModel]="currentCountry" (ngModelChange)="onChangeCountry($event)">
     <option value="0">Selecciona un País</option>
     <option *ngFor="let country of countryList" [value]="country.acronim">{{ country.country }}</option>
