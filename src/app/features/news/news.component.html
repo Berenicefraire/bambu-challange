@@ -1,0 +1,22 @@
+<app-header></app-header>
+<app-card></app-card>
+<p>Estás viendo las noticias de {{currentCountry}} en la categoría {{currentCategory | titlecase }}</p>
+<select [ngModel]="currentCountry" (ngModelChange)="onChangeCountry($event)">
+    <option value="0">Selecciona un País</option>
+    <option *ngFor="let country of countryList" [value]="country.acronim">{{ country.country }}</option>
+</select>
+
+<select [(ngModel)]="currentCategory" (ngModelChange)="onChangeCategory($event)">
+    <option value="0">Selecciona una categoría</option>
+    <option *ngFor="let category of categories" [value]="category">{{ category | titlecase }}</option>
+</select>
+
+
+<div>
+    <pre>
+        {{ newsData  | json }}
+    </pre>
+</div>
+
+
+<app-footer></app-footer>
