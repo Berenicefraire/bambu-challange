@@ -1,22 +1,26 @@
 <app-header></app-header>
-<app-card></app-card>
-<p>Estás viendo las noticias de {{getCountryName()}} en la categoría {{currentCategory | titlecase }}</p>
-<select [ngModel]="currentCountry" (ngModelChange)="onChangeCountry($event)">
-    <option value="0">Selecciona un País</option>
-    <option *ngFor="let country of countryList" [value]="country.acronim">{{ country.country }}</option>
-</select>
+<div class="container">
+    <div class="news-filter">        
+        <div class="input-container in-line">
+            <select [ngModel]="currentCountry" (ngModelChange)="onChangeCountry($event)">
+                <option value="0">Selecciona un País</option>
+                <option *ngFor="let country of countryList" [value]="country.acronim">{{ country.country }}</option>
+            </select>
+        </div>
 
-<select [(ngModel)]="currentCategory" (ngModelChange)="onChangeCategory($event)">
-    <option value="0">Selecciona una categoría</option>
-    <option *ngFor="let category of categories" [value]="category">{{ category | titlecase }}</option>
-</select>
-
-
-<div>
-    <pre>
-        {{ newsData  | json }}
-    </pre>
+        <div class="input-container in-line">
+            <select [(ngModel)]="currentCategory" (ngModelChange)="onChangeCategory($event)">
+                <option value="0">Selecciona una categoría</option>
+                <option *ngFor="let category of categories" [value]="category">{{ category | titlecase }}</option>
+            </select>
+        </div>
+        <p>Noticias de {{getCountryName()}} en la categoría "{{currentCategory | titlecase }}".<br><span class="results">{{articlesCounter}} resultados encontrados.</span></p>
+    </div>
+    <div class="news-container">
+        <div *ngFor="let content of newsData" class="news-card">
+            <app-card [content]="content"></app-card>
+        </div>
+    </div>
 </div>
-
-
 <app-footer></app-footer>
+<app-spinner [displaySpinner]="isLoading"></app-spinner>

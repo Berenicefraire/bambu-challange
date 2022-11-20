@@ -1,25 +1,18 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HeaderComponent } from './components/header/header.component';
-import { CardComponent } from './components/card/card.component';
-import { UserComponent } from './components/user/user.component';
-import { FooterComponent } from './components/footer/footer.component';
+import { SpinnerComponent } from './components/spinner/spinner.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
-    HeaderComponent,
-    CardComponent,
-    UserComponent,
-    FooterComponent
+    SpinnerComponent,
   ],
   imports: [
     CommonModule,
 ],
 exports: [
-  HeaderComponent,
-  CardComponent,
-  UserComponent,
-  FooterComponent  
+  SpinnerComponent,
+  FontAwesomeModule,
 ]
 })
 export class SharedModule { }

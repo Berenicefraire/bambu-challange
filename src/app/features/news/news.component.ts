@@ -9,11 +9,13 @@ import { Country } from '../shared/interfaces/interfaceNews.interface';
   styleUrls: ['./news.component.scss']
 })
 export class NewsComponent implements OnInit {
-
+  
   currentCountry: string;
   currentCategory: string;
   countryList: any[] = [];
   newsData: any[] = [];
+  articlesCounter: number = 0;
+  isLoading:boolean = false;
 
   // Categories
   categories: string[] = ['business','entertainment','general','health','science','sports','technology']
@@ -31,7 +33,13 @@ export class NewsComponent implements OnInit {
   }
 
   getNews(country: string, category: string) {
-    this.newsService.getNews(country, category).subscribe(data => this.newsData = data);
+    this.isLoading = true;
+    this.newsService.getNews(country, category).subscribe(data => {
+      const {status, totalResults, articles} = data;
+      this.articlesCounter = totalResults;
+      this.newsData = articles;
+      this.isLoading = false;
+    });
   }
 
   getCountryList() {

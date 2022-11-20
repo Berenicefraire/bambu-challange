@@ -1,0 +1,11 @@
+<div class="card">
+    <div class="image">
+        <img [src]="content.urlToImage || '../../../assets/images/not_found.jpg'">
+    </div>
+    <div class="content">
+        <h4 [title]="content.title">{{content.title}}</h4>
+        <span>Publicado: {{content.publishedAt | date}}</span>
+        <p>{{content.description || '-'}}</p>
+        <p>Por: {{content.author || 'Sin autor'}}</p>
+    </div>
+</div>
