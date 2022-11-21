@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { NewsService } from '../shared/services/news.service';
-
 import { Country } from '../shared/interfaces/interfaceNews.interface';
 
 @Component({

@@ -1,23 +1,50 @@
 <div class="login">
-    <div class="login-container">
-        <div class="login-form">
-            <div class="text-centered login-header">
-                <img src="https://www.bambu-mobile.com/wp-content/uploads/2021/02/Logo_BM_slogan-03-300x158.png">
-                <h1>Login</h1>
-            </div>
-            <div class="login-body">
-                <div class="input-container">
-                    <label for="user">Usuario</label>
-                    <input type="text" placeholder="Correo electrónico">
-                </div>
-                <div class="input-container">
-                    <label for="user">Password</label>
-                    <input type="text" placeholder="Correo electrónico">
-                </div>
-                <div class="input-container">
-                    <button class="btn__block">Login</button>
-                </div>                
-            </div>
+        <div class="login-container">            
+                <div class="login-form">
+                    <div class="text-centered login-header">
+                        <img src="../../../../assets/images/bambu_mobile.jpg">
+                        <h1> {{ defaultFormBehavior === 'login' ? 'Login' : 'Registro' }}</h1>
+                    </div>
+                    <div class="login-body">
+                        <form [formGroup]="loginForm" (ngSubmit)="userAuthTask()">
+                            <div class="input-container">
+                                <label for="email">Correo electrónico:</label>
+                                <div class="icon-input">
+                                    <span><fa-icon [icon]="faUser"></fa-icon></span>
+                                    <input formControlName="email" type="email" placeholder="Correo electrónico">
+                                </div>
+                            </div>
+                            <div class="input-container">
+                                <label for="password">Password:</label>
+                                <div class="icon-input">
+                                    <span><fa-icon [icon]="faKey"></fa-icon></span>
+                                    <input formControlName="password" type="password" placeholder="Contraseña">
+                                </div>
+                            </div>
+                            <div class="input-container">
+                                <button 
+                                [disabled]="loginForm.invalid" 
+                                [ngClass]="{'disabled': loginForm.invalid}" 
+                                class="btn block turquoise"
+                                >
+                                    {{ defaultFormBehavior === 'login' ? 'Login' : 'Nuevo usuario' }}
+                                </button>                            
+                            </div>
+                        </form>
+                        <div class="input-container">
+                            <button *ngIf="defaultFormBehavior === 'login'" class="btn block bambu" (click)="goToCreateAccount()">Crear cuenta</button>
+                        </div>                       
+                        <div *ngIf="authUserHasError" class="auth-error">
+                            Error en la autenticación (Verifique correo y/o password).
+                        </div>
+                        <div class="auth-error" *ngIf="loginForm?.controls?.['password']?.errors?.['minlength']">
+                            El password debe tener más de 6 caracteres.
+                       </div>
+                       <div class="auth-error" *ngIf="loginForm?.controls?.['email']?.errors?.['required']">
+                            Escribe tu correon electrónico.
+                        </div>                    
+                    </div>
+                </div>            
         </div>
-    </div>
 </div>
+<app-spinner [displaySpinner]="isLoading"></app-spinner>

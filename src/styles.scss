@@ -20,6 +20,21 @@ body {
 
 .input-container {
     margin-bottom: 1rem;
+    .icon-input {
+        position: relative;
+        span {
+            position: absolute;
+            height: 100%;
+            background-color: $bambu;
+            border-radius: 3px 0 0 3px;
+            padding: 0 10px;
+            color: $white;
+            line-height: 50px;
+        }
+        input[type="email"], input[type="text"], input[type="password"] {
+            padding-left: 45px;
+        }
+    }
     &.in-line {
         display: inline-block;
         margin-right: 1rem;
@@ -27,7 +42,7 @@ body {
     label {
         display: block;
     }
-    input[type="text"] {
+    input[type="email"], input[type="text"], input[type="password"] {
         padding: 1rem;
         display: block;
         width: 100%;
@@ -41,10 +56,23 @@ body {
     .btn {
         border: none;
         padding: 1rem;
-        &__block {
+        cursor: pointer;
+        &.disabled {
+            background-color: rgba($turquoise, .2)!important;
+            cursor: not-allowed;
+        }
+        &.block {
             display: block;
             width: 100%;
         }
+        &.turquoise {
+            background-color: $turquoise;
+            color: $white;
+        }
+        &.bambu {
+            background-color: $bambu;
+            color: $white;
+        }        
     }
 }
 

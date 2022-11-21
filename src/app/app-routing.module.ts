@@ -5,8 +5,8 @@ import { NewsModule } from './features/news/news.module';
 // Components
 
 const routes: Routes = [
-  {path: '', redirectTo: 'login', pathMatch: 'full'},
-  {path: 'login', loadChildren: () => import('./login/login.module').then(m => LoginModule)},
+  {path: '', redirectTo: '/auth/login', pathMatch: 'full'},
+  {path: 'auth/:t', loadChildren: () => import('./login/login.module').then(m => LoginModule)},
   {path: 'news', loadChildren: () => import('./features/news/news.module').then(m => NewsModule)}
 ];
 

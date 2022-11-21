@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
+import { canActivate, redirectLoggedInTo } from '@angular/fire/auth-guard';
 
 const routes: Routes = [
-  {path: '', component: LoginPageComponent}
+  {path: '', component: LoginPageComponent, ...canActivate(() => redirectLoggedInTo(['/news']))}
 ];
 
 @NgModule({
