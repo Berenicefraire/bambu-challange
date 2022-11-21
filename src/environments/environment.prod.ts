@@ -1,4 +1,6 @@
 export const environment = {
+  apiNewsUrl: 'https://newsapi.org/v2/top-headlines',
+  apiNewsSecretKey: 'b944aae995094c3698da9b6920dfcc47',
   firebase: {
     projectId: 'challenge-auth-e9d02',
     appId: '1:945077201759:web:719f849ea4b48c00d364ea',

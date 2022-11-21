@@ -12,8 +12,11 @@
         .modal-body {
             .close {
                 position: absolute;
-                top: 1rem;
-                right: 1rem;
+                top: 0;
+                font-weight: 500;
+                right: 0;
+                cursor: pointer;
+                padding: 1rem;
             }
             @media only screen and (max-width: 600px) {
                 width: 90%;

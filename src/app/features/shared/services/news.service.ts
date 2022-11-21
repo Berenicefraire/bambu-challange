@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -10,8 +11,9 @@ export class NewsService {
   constructor(private http: HttpClient) { }
   
   getNews(country: string, category: string):Observable<any> {
-    const API_KEY = 'b944aae995094c3698da9b6920dfcc47';
-    return this.http.get(`https://newsapi.org/v2/top-headlines?category=${category}&country=${country}&apiKey=${API_KEY}`);
+    const apiKey = environment.apiNewsSecretKey;
+    const apiNewsUrl = environment.apiNewsUrl
+    return this.http.get(`${apiNewsUrl}?category=${category}&country=${country}&apiKey=${apiKey}`);
   }
 
   getCountriesList():Observable<any> {
