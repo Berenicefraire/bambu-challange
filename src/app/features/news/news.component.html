@@ -21,9 +21,23 @@
     </div>
     <div class="news-container">
         <div *ngFor="let content of newsData" class="news-card">
-            <app-card [content]="content"></app-card>
+            <app-card [content]="content" (onClickArticle)="readArticle($event)"></app-card>
         </div>
     </div>
 </div>
 <app-footer></app-footer>
 <app-spinner [displaySpinner]="isLoading"></app-spinner>
+
+<app-modal *ngIf="articleSelected"
+[canShow]="showModal"
+(onClose)="handlerModal($event)"
+>
+    <h3 title>{{articleSelected.title}}</h3>
+    <div body>
+        <small>Publicado: {{ articleSelected.publishedAt | date }}</small>
+        <img class="article-front-img" [src]="articleSelected.urlToImage">
+        <small>Autor: {{ articleSelected.author || 'Sin autor' }}, fuente: {{articleSelected.source.name}}</small>
+        <p>{{ articleSelected.content }}</p>
+        <a [href]="articleSelected.url" target="_blank">Leer noticia completa</a>        
+    </div>
+</app-modal>

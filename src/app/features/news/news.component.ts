@@ -15,6 +15,10 @@ export class NewsComponent implements OnInit {
   newsData: any[] = [];
   articlesCounter: number = 0;
   isLoading:boolean = false;
+  articleSelected: any;
+  
+  // Handler modal
+  showModal:boolean = false;
 
   // Categories
   categories: string[] = ['business','entertainment','general','health','science','sports','technology']
@@ -58,6 +62,15 @@ export class NewsComponent implements OnInit {
   getCountryName() {
     let [obj] = this.countryList.filter(obj => obj.acronim == this.currentCountry);
     return obj.country;
+  }
+
+  readArticle(article: any) {
+    this.articleSelected = article;
+    this.showModal = true;
+  }
+
+  handlerModal(e:boolean) {
+    this.showModal = e;
   }
 
 }
