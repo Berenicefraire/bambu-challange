@@ -42,31 +42,33 @@ export class LoginPageComponent implements OnInit {
   }
 
   userAuthTask() {
+    this.isLoading = true;
+    const { email, password } = this.f;
     if(this.defaultFormBehavior === 'login') {
-      this.isLoading = true;
-      const { email, password } = this.f;
-      this.user.signIn(email, password).then((res:any) => {
-        const userEmail = res.user.email;
-        this.isLoading = false;
-        this.authUserHasError = false;
-        this.userStorage.setUser(userEmail);
-        this.router.navigate(['/news'])
-      }).catch(error => {
-        this.isLoading = false;
-        const {message, code} = error;
-        if(code === 'auth/wrong-password') {
-          this.authUserHasError = true;
-        }
-      });
+      this._signIn(email, password)
     } else {
-      this.newUser();
+      this._newUser(email, password);
     }
 
   }
 
-  newUser() {
-    this.isLoading = true;
-    const { email, password } = this.f;
+  private _signIn(email: string, password: string) {    
+    this.user.signIn(email, password).then((res:any) => {
+      const userEmail = res.user.email;
+      this.isLoading = false;
+      this.authUserHasError = false;
+      this.userStorage.setUser(userEmail);
+      this.router.navigate(['/news'])
+    }).catch(error => {
+      this.isLoading = false;
+      const {message, code} = error;
+      if(code === 'auth/wrong-password') {
+        this.authUserHasError = true;
+      }
+    });    
+  }
+
+  private _newUser(email: string, password: string) {
     this.user.newUser(email, password).then((res: any) => {
       this.isLoading = false;
       const userEmail = res.user.email;
@@ -74,13 +76,17 @@ export class LoginPageComponent implements OnInit {
       this.router.navigate(['./news']);
     }).catch(err => {
       this.isLoading = false;
-      // ToDo: Handler when creat account fail
+      // ToDo: Handler when create account fails
     });
   }
 
-  goToCreateAccount() {
-    // this.router.navigateByUrl('./auth/register');
-    this.router.navigate(['./auth/register']).then(() => window.location.reload());
+  splitPage() {
+    console.log(this.defaultFormBehavior);
+    if(this.defaultFormBehavior !== 'login') {
+      this.router.navigate(['./auth/login']).then(() => window.location.reload());
+    } else {
+      this.router.navigate(['./auth/register']).then(() => window.location.reload());
+    }
   }
 
 }

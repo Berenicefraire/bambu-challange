@@ -1,0 +1,48 @@
+@import '../../../../../assets/scss/parcials/colors';
+.user {    
+    position: relative;
+    display: inline-block;
+    &:hover .user-menu {
+        display: block;
+    }
+    .user-email {
+        color: $bambu;
+        line-height: 30px;
+        font-size: .8rem;
+        margin-right: 5px;
+        cursor: default;
+    }
+    .user-icon {
+        line-height: 30px;
+        height: 30px;
+        width: 30px;
+        border-radius: 50%;
+        display: inline-block;
+        background-color: $bambu;
+        color: $white;        
+    }
+    .user-menu {
+        display: none;
+        position: absolute;
+        background-color: $light-gray;
+        color: $bambu;
+        padding: 1rem;
+        border-radius: 0 0 3px 3px;
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+        top: 100%;
+        right: 0;
+        z-index: 99999;
+    }
+}
+.signOut {
+    padding: .5rem 1rem;
+    border: none;
+    color: $white;
+    background-color: $bambu;
+    text-transform: uppercase;
+    transition: all .3s ease 0s;
+    font-size: .6rem;
+    &:hover {
+        background-color: rgba($bambu, .5);
+    }
+}

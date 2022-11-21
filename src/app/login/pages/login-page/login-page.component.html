@@ -27,12 +27,15 @@
                                 [ngClass]="{'disabled': loginForm.invalid}" 
                                 class="btn block turquoise"
                                 >
-                                    {{ defaultFormBehavior === 'login' ? 'Login' : 'Nuevo usuario' }}
+                                    {{ defaultFormBehavior === 'login' ? 'Login' : 'Crear usuario' }}
                                 </button>                            
                             </div>
                         </form>
+                        <p class="text-centered">Ó</p>
                         <div class="input-container">
-                            <button *ngIf="defaultFormBehavior === 'login'" class="btn block bambu" (click)="goToCreateAccount()">Crear cuenta</button>
+                            <button class="btn block bambu" (click)="splitPage()">
+                                {{ defaultFormBehavior !== 'login' ? 'Login' : 'Nuevo usuario' }}
+                            </button>
                         </div>                       
                         <div *ngIf="authUserHasError" class="auth-error">
                             Error en la autenticación (Verifique correo y/o password).
@@ -41,7 +44,7 @@
                             El password debe tener más de 6 caracteres.
                        </div>
                        <div class="auth-error" *ngIf="loginForm?.controls?.['email']?.errors?.['required']">
-                            Escribe tu correon electrónico.
+                            Escribe tu correo electrónico.
                         </div>                    
                     </div>
                 </div>            

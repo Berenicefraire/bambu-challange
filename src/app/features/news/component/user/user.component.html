@@ -1,5 +1,9 @@
-<span>{{getUserEmail}}</span>
-<span class="user-icon">
-    <fa-icon [icon]="faUser"></fa-icon>
-</span>
-<button (click)="signOut()">SignOut</button>
+<div class="user">
+    <span class="user-email">{{getUserEmail}}</span>
+    <div class="user-icon">
+        <fa-icon [icon]="faUser"></fa-icon>
+    </div>
+    <div class="user-menu">
+        <button class="signOut" (click)="signOut()">Sign Out</button>
+    </div>
+</div>
