@@ -11,6 +11,9 @@
         font-size: .8rem;
         margin-right: 5px;
         cursor: default;
+        @media only screen and (max-width: 600px) {
+            display: none;
+        }
     }
     .user-icon {
         line-height: 30px;
@@ -19,7 +22,8 @@
         border-radius: 50%;
         display: inline-block;
         background-color: $bambu;
-        color: $white;        
+        color: $white;
+        text-align: center;    
     }
     .user-menu {
         display: none;
@@ -32,6 +36,21 @@
         top: 100%;
         right: 0;
         z-index: 99999;
+        ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            li:not(:last-child) {
+                border-bottom: 1px solid rgba(#000, .1);
+                padding-bottom: 10px;
+                margin-bottom: 10px;
+            &.account-user {
+                @media only screen and (min-width: 600px) {
+                    display: none;
+                }                
+            }
+            }
+        }
     }
 }
 .signOut {

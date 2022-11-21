@@ -6,8 +6,31 @@
     grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
     grid-auto-rows: auto;
     grid-row-gap: 2em;
-    grid-column-gap: 2em;
+    grid-column-gap: 2em;    
 }
 .results {
-    
+    font-weight: 500;
+    font-size: .9rem;
+    font-style: italic;
+}
+.news-filter-container {
+    display: grid;
+    grid-template-areas: "country category";
+    grid-template-columns: auto auto;
+    grid-template-rows: auto;
+    column-gap: 1rem;
+    width: 50%;
+    @media only screen and (max-width: 600px) {
+        width: 100%;
+        grid-template-columns: auto;
+        grid-template-areas: 
+        "country"
+        "category";
+    }
+    & > div:first-child {
+        grid-area: country;
+    }
+    & > div:last-child {
+        grid-area: category;
+    }    
 }

@@ -4,6 +4,9 @@
         <fa-icon [icon]="faUser"></fa-icon>
     </div>
     <div class="user-menu">
-        <button class="signOut" (click)="signOut()">Sign Out</button>
+        <ul>
+            <li class="account-user"><span>{{getUserEmail}}</span></li>
+            <li><button class="signOut" (click)="signOut()">Sign Out</button></li>
+        </ul>
     </div>
 </div>

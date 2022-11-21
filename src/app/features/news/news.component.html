@@ -1,18 +1,21 @@
 <app-header></app-header>
 <div class="container">
-    <div class="news-filter">        
-        <div class="input-container in-line">
-            <select [ngModel]="currentCountry" (ngModelChange)="onChangeCountry($event)">
-                <option value="0">Selecciona un País</option>
-                <option *ngFor="let country of countryList" [value]="country.acronim">{{ country.country }}</option>
-            </select>
-        </div>
-
-        <div class="input-container in-line">
-            <select [(ngModel)]="currentCategory" (ngModelChange)="onChangeCategory($event)">
-                <option value="0">Selecciona una categoría</option>
-                <option *ngFor="let category of categories" [value]="category">{{ category | titlecase }}</option>
-            </select>
+    <div class="news-filter">
+        <div class="news-filter-container">
+            <div class="input-container">
+                <label for="country">País</label>
+                <select class="block" id="country" [ngModel]="currentCountry" (ngModelChange)="onChangeCountry($event)">
+                    <option value="0">Selecciona un País</option>
+                    <option *ngFor="let country of countryList" [value]="country.acronim">{{ country.country }}</option>
+                </select>
+            </div>
+            <div class="input-container">
+                <label for="category">Categoría</label>
+                <select class="block" id="category" [(ngModel)]="currentCategory" (ngModelChange)="onChangeCategory($event)">
+                    <option value="0">Selecciona una categoría</option>
+                    <option *ngFor="let category of categories" [value]="category">{{ category | titlecase }}</option>
+                </select>
+            </div>
         </div>
         <p>Noticias de {{getCountryName()}} en la categoría "{{currentCategory | titlecase }}".<br><span class="results">{{articlesCounter}} resultados encontrados.</span></p>
     </div>

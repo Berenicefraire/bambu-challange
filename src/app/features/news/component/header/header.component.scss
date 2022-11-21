@@ -1,7 +1,45 @@
 .header {
-    background-color: #ffffff;
-    color: #0C3C4A;
-    text-align: center;
+    background-color: #ffffff;    
     padding: 1rem;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
+    display: grid;
+    grid-template-areas: "logo title user";
+    grid-template-columns: 1fr 1fr 1fr;
+    @media only screen and (max-width: 600px) {
+        grid-template-areas: 
+        "logo logo logo"
+        "title title title"
+        ;
+        grid-template-columns: auto 1fr auto;
+    }
+    .logo {
+        grid-area: logo;
+        justify-self: start;
+        align-self: center;
+        @media only screen and (max-width: 600px) {
+            justify-self: center;
+        }        
+        img {
+            height: 40px;
+            width: auto;
+        }
+    }
+    .title {
+        grid-area: title;
+        justify-self: center;
+        align-self: center;
+        h1 {
+            margin: 0;
+        }
+    }
+    .user {
+        justify-self: end;
+        align-self: center;
+        grid-area: user;
+        @media only screen and (max-width: 600px) {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+        }
+    }
 }
