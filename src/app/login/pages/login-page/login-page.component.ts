@@ -62,7 +62,8 @@ export class LoginPageComponent implements OnInit {
     }).catch(error => {
       this.isLoading = false;
       const {message, code} = error;
-      if(code === 'auth/wrong-password') {
+      // This logic should be on backend side
+      if(code === 'auth/wrong-password' || code === 'auth/user-not-found') {
         this.authUserHasError = true;
       }
     });    

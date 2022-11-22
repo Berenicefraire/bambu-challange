@@ -43,7 +43,7 @@
                         <div class="auth-error" *ngIf="loginForm?.controls?.['password']?.errors?.['minlength']">
                             El password debe tener más de 6 caracteres.
                        </div>
-                       <div class="auth-error" *ngIf="loginForm?.controls?.['email']?.errors?.['required']">
+                       <div class="auth-error" *ngIf="loginForm?.controls?.['email']?.errors?.['required'] && !loginForm?.controls?.['email']?.pristine">
                             Escribe tu correo electrónico.
                         </div>                    
                     </div>
